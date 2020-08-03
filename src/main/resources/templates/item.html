@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>2014958006, 구성우</title>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand" style="text-decoration:none;">
+                    <img th:src="@{/images/spring_boot_gray.png}" th:width="100" th:height="100"  class="img-rounded"
+                         style="display:inline-block;height:100%;margin-right:30px;margin-bottom:40px"/>
+                    <span class="display-3" style=" color:dimgray; font-weight: bolder;">SpringBoot</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div th:if="${#httpServletRequest.requestURI.contains('/basic')}" class="container">
+    <div class="page-header">
+        <h1 style="font-size:40px;font-weight: bold;color:dimgray; margin-bottom:30px;">Basic 확인</h1>
+    </div>
+
+    <table class="table table-hover">
+        <tr>
+            <th style="padding:13px 0 0 15px;font-weight:bold;color:dimgray">이름</th>
+            <td th:text="${basic.name}"></td>
+        </tr>
+        <tr>
+            <th style="padding:13px 0 0 15px;font-weight:bold;color:dimgray">직책</th>
+            <td th:text="${basic.label}"></td>
+        </tr>
+        <tr>
+            <th style="padding:13px 0 0 15px;font-weight:bold;color:dimgray">이메일</th>
+            <td th:text="${basic.email}"></td>
+        </tr>
+        <tr>
+            <th style="padding:13px 0 0 15px;font-weight:bold;color:dimgray">연락처</th>
+            <td th:text="${basic.phone}"></td>
+        </tr>
+        <tr>
+            <th style="padding:13px 0 0 15px;font-weight:bold;color:dimgray">등록시간</th>
+            <td th:text="${basic.createdDat} ? ${#temporals.format(basic.createdDat,'yyyy-MM-dd HH:mm:ss')} : ${basic?.createdDat}"></td>
+        </tr>
+        <tr>
+            <th style="padding:13px 0 0 15px;font-weight:bold;color:dimgray">수정시간</th>
+            <td th:text="${basic.updatedDat} ? ${#temporals.format(basic.updatedDat,'yyyy-MM-dd HH:mm:ss')} : ${basic?.updatedDat}"></td>
+        </tr>
+    </table>
+    <div style="width:120px;margin:10px 0;">
+        <a href="#" th:href="@{'/basic/edit/'+${basic.idx}}" class="btn btn-dark btn-block">수정</a>
+        <a href="#" th:href="@{'/basic/delete/'+${basic.idx}}" class="btn btn-dark btn-block">삭제</a>
+    </div>
+</div>
+
+<div th:if="${#httpServletRequest.requestURI.contains('/profile')}" class="container">
+    <div class="page-header">
+        <h1 style="font-size:40px;font-weight: bold;color:dimgray; margin-bottom:30px;">Profile 확인</h1>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th style="padding:13px 0 0 15px;font-weight:bold;color:dimgray">SNS</th>
+            <td th:text="${profile.network}"></td>
+        </tr>
+        <tr>
+            <th style="padding:13px 0 0 15px;font-weight:bold;color:dimgray">ID</th>
+            <td th:text="${profile.username}"></td>
+        </tr>
+        <tr>
+            <th style="padding:13px 0 0 15px;font-weight:bold;color:dimgray">링크</th>
+            <td th:text="${profile.url}"></td>
+        </tr>
+        <tr>
+            <th style="padding:13px 0 0 15px;font-weight:bold;color:dimgray">등록시간</th>
+            <td th:text="${profile.createdDat} ? ${#temporals.format(profile.createdDat,'yyyy-MM-dd HH:mm:ss')} : ${profile?.createdDat}"></td>
+        </tr>
+        <tr>
+            <th style="padding:13px 0 0 15px;font-weight:bold;color:dimgray">수정시간</th>
+            <td th:text="${profile.updatedDat} ? ${#temporals.format(profile.updatedDat,'yyyy-MM-dd HH:mm:ss')} : ${profile?.updatedDat}"></td>
+        </tr>
+    </table>
+    <div style="width:120px;margin:10px 0;">
+        <a href="#" th:href="@{'/profile/edit/'+${profile.idx}}" class="btn btn-dark btn-block">수정</a>
+        <a href="#" th:href="@{'/profile/delete/'+${profile.idx}}" class="btn btn-dark btn-block">삭제</a>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

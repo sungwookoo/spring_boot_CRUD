@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>2014958006, 구성우</title>
+
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand" style="text-decoration:none;">
+                    <img th:src="@{/images/spring_boot_gray.png}" th:width="100" th:height="100"  class="img-rounded"
+                         style="display:inline-block;height:100%;margin-right:30px;margin-bottom:40px"/>
+                    <span class="display-3" style=" color:dimgray; font-weight: bolder;">SpringBoot</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div th:if="${#httpServletRequest.requestURI == '/basic/new'}" class="container">
+    <div class="page-header">
+        <h1 class="display-4" style="font-size:40px;font-weight: bold;color:dimgray; margin-bottom:30px;">Basic 작성</h1>
+    </div>
+    <form class="" action="#" th:action="@{/basic/add}" th:object="${basic}" method="post">
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label" style="font-weight:bold;color:dimgray">이름</label>
+            <div class="col-sm-10">
+                <input th:field="*{name}" type="text" class="form-control" id="name" placeholder="이름" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="label" class="col-sm-2 col-form-label" style="font-weight:bold;color:dimgray">직책</label>
+            <div class="col-sm-10">
+                <input th:field="*{label}" type="text" class="form-control" id="label" placeholder="직책">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label" style="font-weight:bold;color:dimgray">이메일</label>
+            <div class="col-sm-10">
+                <input th:field="*{email}" type="text" class="form-control" id="email" placeholder="이메일">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="phone" class="col-sm-2 col-form-label" style="font-weight:bold;color:dimgray">전화번호</label>
+            <div class="col-sm-10">
+                <input th:field="*{phone}" type="text" class="form-control" id="phone" placeholder="전화번호">
+            </div>
+        </div>
+        <div style="width:120px;margin:10px 0;">
+            <input type="submit" id="submit" value="작성" class="btn btn-dark btn-block">
+        </div>
+    </form>
+</div>
+
+
+<div th:if="${#httpServletRequest.requestURI == '/profile/new'}" class="container">
+    <div class="page-header">
+        <h1 class="display-4" style="font-size:40px;font-weight: bold;color:dimgray; margin-bottom:30px;">Profile
+            작성</h1>
+    </div>
+    <form action="#" th:action="@{/profile/add}" th:object="${profile}" method="post">
+        <div class="form-group row">
+            <label for="network" class="col-sm-2 col-form-label" style="font-weight:bold;color:dimgray">SNS</label>
+            <div class="col-sm-10">
+                <input th:field="*{network}" type="text" class="form-control" id="network" placeholder="SNS" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="username" class="col-sm-2 col-form-label" style="font-weight:bold;color:dimgray">ID</label>
+            <div class="col-sm-10">
+                <input th:field="*{username}" type="text" class="form-control" id="username" placeholder="직책">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="url" class="col-sm-2 col-form-label" style="font-weight:bold;color:dimgray">링크</label>
+            <div class="col-sm-10">
+                <input th:field="*{url}" type="text" class="form-control" id="url" placeholder="링크">
+            </div>
+        </div>
+        <div style="width:120px;margin:10px 0;">
+            <input type="submit" value="작성" class="btn btn-dark btn-block">
+        </div>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap_n2014958006.css">
+    <title>2014958006, 구성우</title>
+    <style> body {
+        margin-left: 1.2%;
+    }</style>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand" style="text-decoration:none;">
+                    <img th:src="@{/images/spring_boot_gray.png}" th:width="100" th:height="100" class="img-rounded"
+                         style="display:inline-block;height:100%;margin-right:30px;margin-bottom:40px"/>
+                    <span class="display-3" style=" color:dimgray; font-weight: bolder;">SpringBoot</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="page-header">
+        <h1 class="display-4" style="font-size:40px;font-weight: bold;color:dimgray; margin-bottom:30px;">Basic 목록</h1>
+    </div>
+    <div class="pull-right" style="width:100px;margin:10px 0;">
+        <a href="#" th:href="@{/basic/new}" class="btn btn-dark btn-block">인원 등록</a>
+    </div>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">이름</th>
+            <th scope="col">직책</th>
+            <th scope="col">이메일</th>
+            <th scope="col">연락처</th>
+            <th scope="col">등록시간</th>
+            <th scope="col">수정시간</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="basic : ${basicList}">
+            <td scope="row" th:text="${basic.idx}"></td>
+            <td><a href="#" th:href="@{'/basic/' + ${basic.idx}}" th:text="${basic.name}"></a></td>
+            <td th:text="${basic.label}"></td>
+            <td th:text="${basic.email}"></td>
+            <td th:text="${basic.phone}"></td>
+            <td th:text="${basic.createdDat} ? ${#temporals.format(basic.createdDat,'yyyy-MM-dd HH:mm:ss')} : ${basic.createdDat}"></td>
+            <td th:text="${basic.updatedDat} ? ${#temporals.format(basic.updatedDat,'yyyy-MM-dd HH:mm:ss')} : ${basic.updatedDat}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <div class="page-header">
+        <h1 class="display-4" style="font-size:40px;font-weight: bold;color:dimgray; margin-bottom:30px;">Profile
+            목록</h1>
+    </div>
+    <div class="pull-right" style="width:120px;margin:10px 0;">
+        <a href="#" th:href="@{/profile/new}" class="btn btn-dark btn-block">프로필 등록</a>
+    </div>
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">SNS</th>
+            <th scope="col">ID</th>
+            <th scope="col">링크</th>
+            <th scope="col">등록시간</th>
+            <th scope="col">수정시간</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="profile : ${profileList}">
+            <td scope="row" th:text="${profile.idx}"></td>
+            <td><a href="#" th:href="@{'/profile/' + ${profile.idx}}" th:text="${profile.network}"></a></td>
+            <td th:text="${profile.username}"></td>
+            <td th:text="${profile.url}"></td>
+            <td th:text="${profile.createdDat} ? ${#temporals.format(profile.createdDat,'yyyy-MM-dd HH:mm:ss')} : ${profile.createdDat}"></td>
+            <td th:text="${profile.updatedDat} ? ${#temporals.format(profile.updatedDat,'yyyy-MM-dd HH:mm:ss')} : ${profile.updatedDat}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
